@@ -1,4 +1,4 @@
-# Event Management for productive people
+# Event Management for Productive People
 
 A new Flutter project.
 
