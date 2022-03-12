@@ -1,4 +1,4 @@
-# task_management
+# Event Management for Productive People
 
 A new Flutter project.
 
