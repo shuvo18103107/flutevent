@@ -15,6 +15,8 @@ class AddTaskPage extends StatefulWidget {
 
 class _AddTaskPageState extends State<AddTaskPage> {
   DateTime _selectedDate = DateTime.now();
+  String _startTime = DateFormat('hh:mm a').format(DateTime.now()).toString();
+  String _endTime = "9:30 AM";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +46,37 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     _getDateFromUser();
                   },
                 ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: MyInputField(
+                    title: "Start Time",
+                    hint: _startTime,
+                    widget: IconButton(
+                      icon: Icon(
+                        Icons.access_time_rounded,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {},
+                    ),
+                  )),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Expanded(
+                      child: MyInputField(
+                    title: "End Time",
+                    hint: _endTime,
+                    widget: IconButton(
+                      icon: Icon(
+                        Icons.access_time_rounded,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ))
+                ],
               )
             ],
           ),
@@ -89,5 +122,17 @@ class _AddTaskPageState extends State<AddTaskPage> {
     } else {
       print("It,s null or something is wrong");
     }
+  }
+
+  _getTimeFromUser({bool isStartTime}) {
+    var pickedTime = _showTimepicker();
+    String _formatedTime = pickedTime.format(context);
+  }
+
+  _showTimepicker() {
+    return showTimePicker(
+        initialEntryMode: TimePickerEntryMode.input,
+        context: context,
+        initialTime: TimeOfDay(hour: 9, minute: 10));
   }
 }
